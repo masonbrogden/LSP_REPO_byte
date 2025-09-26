@@ -1,0 +1,46 @@
+Assumptions:
+
+Input file is named products.csv and placed under the data/ folder.
+
+The first row of the input is a header with column names.
+
+Rows with missing or invalid data (e.g., non-numeric prices) are skipped.
+
+Output file will be written to data/transformed_products.csv.
+
+Design Notes:
+
+The pipeline follows the Extract → Transform → Load pattern:
+
+Extract: Reads rows from products.csv.
+
+Transform: Cleans data, validates fields, and skips malformed rows.
+
+Load: Writes valid rows into transformed_products.csv.
+
+Code is organized into methods for clarity and reusability.
+
+Basic error handling ensures bad rows do not stop execution.
+
+How to Run
+
+Place your input file at:
+
+data/products.csv
+
+
+In Eclipse, right-click ETLPipeline.java → Run As → Java Application.
+
+On success, the console prints a summary like:
+
+Summary:
+Rows read: 6
+Rows transformed: 6
+Rows skipped: 0
+Output written to: data/transformed_products.csv
+
+
+Open data/transformed_products.csv to view results.
+
+AI Usage:
+Used ai to help me navigate Eclipse and break down the project into simple terms.
