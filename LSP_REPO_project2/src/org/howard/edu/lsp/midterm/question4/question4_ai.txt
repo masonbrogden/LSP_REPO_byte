@@ -1,0 +1,22 @@
+Requirements say: keep Device abstract; implement DoorLock, Thermostat, Camera; use Networked and BatteryPowered interfaces. I’ll extend Device and delegate connection via setConnected(boolean).
+
+AI:
+Correct. Ensure constructors call super(id, location). For batteries, validate 0..100 and throw IllegalArgumentException. getStatus() format must match exactly.
+
+Student:
+Here’s my plan:
+
+DoorLock & Camera: implement Networked + BatteryPowered
+
+Thermostat: implement Networked only
+
+Main exercises heartbeat, connects devices, and prints status.
+
+AI:
+That matches the driver’s expectations. Remember to put everything in org.howard.edu.lsp.midterm.question4.
+
+Student:
+I’m getting Eclipse red X errors: “Device(String, String) is undefined.”
+
+AI:
+That happens if Eclipse is compiling against the wrong Device.java or it’s missing. Verify Device.java exists in the same package, unchanged. Clean/rebuild after adding it.

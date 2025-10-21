@@ -1,0 +1,23 @@
+Student:
+I have a class that’s doing too much (validation, persistence, and business rules). Can you help me reason about how to improve cohesion without breaking behavior?
+
+AI:
+List the discrete responsibilities you see. Try grouping them by what changes together. Typical splits: domain logic vs. I/O vs. persistence vs. validation. Consider introducing small collaborators and push code to the class that has the data/authority to make the decision (“tell, don’t ask”).
+
+Student:
+Responsibilities I see: (1) input validation, (2) computing business totals/rules, (3) formatting output, (4) writing to a repository. I’m thinking: Validator, Service (rules), Formatter, and a Repository interface. The original class would orchestrate.
+
+AI:
+That separation increases cohesion and makes each component simpler to test. Keep dependencies pointing inward (domain) and depend on abstractions (interfaces) for the Repository. Use constructor injection so the class is easy to mock in tests.
+
+Student:
+What about error handling—checked vs. runtime?
+
+AI:
+Use domain-specific exceptions for business rule violations (runtime is fine if documented). For infrastructure (I/O, DB), wrap lower-level exceptions so callers don’t depend on implementation details.
+
+Student:
+OK. I’ll refactor the long methods into small, named helpers and move formatting to a ReportFormatter. I’ll keep the orchestration in a service class.
+
+AI:
+Sounds good. Include before/after class outlines in your write-up to make the cohesion argument clear.
